@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32328.378
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biblioteca.Data", "Biblioteca.Data\Biblioteca.Data.csproj", "{50B6D0D4-FFAF-476E-AF4D-2A5D8930E16E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biblioteca.Business", "Biblioteca.Business\Biblioteca.Business.csproj", "{8381992A-BDAC-46AB-BAD9-5678506343E7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{50B6D0D4-FFAF-476E-AF4D-2A5D8930E16E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50B6D0D4-FFAF-476E-AF4D-2A5D8930E16E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50B6D0D4-FFAF-476E-AF4D-2A5D8930E16E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50B6D0D4-FFAF-476E-AF4D-2A5D8930E16E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8381992A-BDAC-46AB-BAD9-5678506343E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8381992A-BDAC-46AB-BAD9-5678506343E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8381992A-BDAC-46AB-BAD9-5678506343E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8381992A-BDAC-46AB-BAD9-5678506343E7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BD68D18E-8B1C-43FE-B9E2-EFE4F07498D1}
+	EndGlobalSection
+EndGlobal
