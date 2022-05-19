@@ -9,8 +9,15 @@
   <ItemGroup>
     <Folder Include="Migrations\" />
     <Folder Include="Repository\" />
-    <Folder Include="Mappings\" />
-    <Folder Include="Context\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="6.0.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Biblioteca.Business\Biblioteca.Business.csproj" />
   </ItemGroup>
 
 </Project>
