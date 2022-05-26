@@ -1,14 +1,16 @@
-﻿namespace Biblioteca.Business.Models
+﻿using Biblioteca.Business.Enums;
+
+namespace Biblioteca.Business.Models
 {
     public class EditoraModel : EntityModel
     {
-        public string Nome { get; set; }
-        public string Documento { get; set; }
-        //    public TipoEditora TipoEditora { get; set; }
-        //   public Endereco Endereco { get; set; }
-        public bool Ativo { get; set; }
+        public string Nome { get; private set; }
+        public string Documento { get; private set; }
+        public TipoEditora TipoEditora { get; private set; }
+        public EnderecoModel Endereco { get; private set; }
+        public bool Ativo { get; private set; }
 
         /* EF Relations */
-        //   public IEnumerable<Livro> Livros { get; set; }
+        public IEnumerable<LivroModel> Livros { get; private set; }
     }
 }

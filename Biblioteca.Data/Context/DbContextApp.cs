@@ -7,6 +7,8 @@ namespace Biblioteca.Data.Context
     {
         public DbContextApp(DbContextOptions options) : base(options) { }
 
+        public DbSet<LivroModel> Livros { get; set; }
+        public DbSet<EnderecoModel> Enderecos { get; set; }
         public DbSet<EditoraModel> Editoras { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

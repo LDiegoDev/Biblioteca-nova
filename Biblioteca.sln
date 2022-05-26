@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32328.378
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biblioteca.Data", "Biblioteca.Data\Biblioteca.Data.csproj", "{50B6D0D4-FFAF-476E-AF4D-2A5D8930E16E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Biblioteca.Data", "Biblioteca.Data\Biblioteca.Data.csproj", "{50B6D0D4-FFAF-476E-AF4D-2A5D8930E16E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biblioteca.Business", "Biblioteca.Business\Biblioteca.Business.csproj", "{8381992A-BDAC-46AB-BAD9-5678506343E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Biblioteca.Business", "Biblioteca.Business\Biblioteca.Business.csproj", "{8381992A-BDAC-46AB-BAD9-5678506343E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biblioteca.API", "Biblioteca.API\Biblioteca.API.csproj", "{1EE489D9-C12A-461D-8B39-1179D51E4B88}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{8381992A-BDAC-46AB-BAD9-5678506343E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8381992A-BDAC-46AB-BAD9-5678506343E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8381992A-BDAC-46AB-BAD9-5678506343E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1EE489D9-C12A-461D-8B39-1179D51E4B88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EE489D9-C12A-461D-8B39-1179D51E4B88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EE489D9-C12A-461D-8B39-1179D51E4B88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EE489D9-C12A-461D-8B39-1179D51E4B88}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
