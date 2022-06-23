@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Biblioteca.Data.Mappings
 {
-    public class EnderecoMapping : IEntityTypeConfiguration<EnderecoModel>
+    public class EnderecoMapping : IEntityTypeConfiguration<Endereco>
     {
-        public void Configure(EntityTypeBuilder<EnderecoModel> builder)
+        public void Configure(EntityTypeBuilder<Endereco> builder)
         {
             builder.HasKey(p => p.Id);
 

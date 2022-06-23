@@ -5,20 +5,20 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Biblioteca.Data.Repository
 {
-    public class EditoraRepository : Repository<EditoraModel>, IEditoraRepository
+    public class EditoraRepository : Repository<Editora>, IEditoraRepository
     {
         public EditoraRepository(DbContextApp context) : base(context)
         {
         }
 
-        public async Task<EditoraModel> ObterEditoraEndereco(Guid id)
+        public async Task<Editora> ObterEditoraEndereco(Guid id)
         {
             return await Db.Editoras.AsNoTracking()
                 .Include(c => c.Endereco)
                 .FirstOrDefaultAsync(c => c.Id == id);
         }
 
-        public async Task<EditoraModel> ObterEditoraLivrosEndereco(Guid id)
+        public async Task<Editora> ObterEditoraLivrosEndereco(Guid id)
         {
             return await Db.Editoras.AsNoTracking()
                 .Include(c => c.Livros)

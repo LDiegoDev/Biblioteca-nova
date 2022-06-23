@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Biblioteca.Data.Repository
 {
-    public class EnderecoRepository : Repository<EnderecoModel>, IEnderecoRepository
+    public class EnderecoRepository : Repository<Endereco>, IEnderecoRepository
     {
         public EnderecoRepository(DbContextApp context) : base(context) { }
 
-        public async Task<EnderecoModel> ObterEnderecoPorEditora(Guid editoraId)
+        public async Task<Endereco> ObterEnderecoPorEditora(Guid editoraId)
         {
             return await Db.Enderecos.AsNoTracking()
                 .FirstOrDefaultAsync(f => f.EditoraId == editoraId);

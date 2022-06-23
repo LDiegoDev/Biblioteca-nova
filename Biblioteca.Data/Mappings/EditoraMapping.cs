@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Biblioteca.Data.Mappings
 {
-    public class EditoraMapping : IEntityTypeConfiguration<EditoraModel>
+    public class EditoraMapping : IEntityTypeConfiguration<Editora>
     {
-        public void Configure(EntityTypeBuilder<EditoraModel> builder)
+        public void Configure(EntityTypeBuilder<Editora> builder)
         {
             builder.HasKey(p => p.Id);
 

@@ -1,10 +1,10 @@
 ﻿namespace Biblioteca.Business.Models
 {
-    public abstract class EntityModel
+    public abstract class Entity
     {
         public Guid Id { get; set; }
 
-        protected EntityModel()
+        protected Entity()
         {
             Id = Guid.NewGuid();
         }

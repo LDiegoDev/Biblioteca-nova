@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Biblioteca.Data.Mappings
 {
-    public class LivroMapping : IEntityTypeConfiguration<LivroModel>
+    public class LivroMapping : IEntityTypeConfiguration<Livro>
     {
-        public void Configure(EntityTypeBuilder<LivroModel> builder)
+        public void Configure(EntityTypeBuilder<Livro> builder)
         {
             builder.HasKey(p => p.Id);
 

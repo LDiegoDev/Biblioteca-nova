@@ -3,7 +3,7 @@ using System.Linq.Expressions;
 
 namespace Biblioteca.Business.Interfaces
 {
-    public interface IRepository<TEntity> : IDisposable where TEntity : EntityModel
+    public interface IRepository<TEntity> : IDisposable where TEntity : Entity
     {
         Task Adicionar(TEntity entity);
         Task<TEntity> ObterPorId(Guid id);

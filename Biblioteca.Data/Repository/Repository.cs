@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 
 namespace Biblioteca.Data.Repository
 {
-    public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity : EntityModel, new()
+    public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity : Entity, new()
     {
         protected readonly DbContextApp Db;
         protected readonly DbSet<TEntity> DbSet;

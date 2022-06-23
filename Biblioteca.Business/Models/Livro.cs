@@ -1,8 +1,9 @@
 ﻿namespace Biblioteca.Business.Models
 {
-    public class LivroModel : EntityModel
+    public class Livro : Entity
     {
         public Guid EditoraId { get; private set; }
+        public Guid AutorId { get; private set; }
 
         public string Nome { get; private set; }
         public string Descricao { get; private set; }
@@ -12,6 +13,9 @@
         public bool Ativo { get; private set; }
 
         /* EF Relations */
-        public EditoraModel Editora { get; private set; }
+        public Editora Editora { get; private set; }
+
+        public Autor Autor { get; private set; }
+
     }
 }

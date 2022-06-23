@@ -4,7 +4,7 @@ using FluentValidation;
 
 namespace Biblioteca.Business.Models.Validations
 {
-    public class EditoraValidation : AbstractValidator<EditoraModel>
+    public class EditoraValidation : AbstractValidator<Editora>
     {
         public EditoraValidation()
         {

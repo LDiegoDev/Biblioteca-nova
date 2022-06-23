@@ -1,6 +1,6 @@
 ﻿namespace Biblioteca.Business.Models
 {
-    public class EnderecoModel : EntityModel
+    public class Endereco : Entity
     {
         public Guid EditoraId { get; private set; }
         public string Logradouro { get; private set; }
@@ -12,6 +12,6 @@
         public string Estado { get; private set; }
 
         /* EF Relation */
-        public EditoraModel Editora { get; private set; }
+        public Editora Editora { get; private set; }
     }
 }

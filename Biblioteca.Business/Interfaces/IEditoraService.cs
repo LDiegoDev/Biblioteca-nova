@@ -4,10 +4,10 @@ namespace Biblioteca.Business.Interfaces
 {
     public interface IEditoraService : IDisposable
     {
-        Task<bool> Adicionar(EditoraModel Editora);
-        Task<bool> Atualizar(EditoraModel Editora);
+        Task<bool> Adicionar(Editora Editora);
+        Task<bool> Atualizar(Editora Editora);
         Task<bool> Remover(Guid id);
 
-        Task AtualizarEndereco(EnderecoModel endereco);
+        Task AtualizarEndereco(Endereco endereco);
     }
 }

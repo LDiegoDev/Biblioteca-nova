@@ -22,7 +22,22 @@ namespace Biblioteca.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("Biblioteca.Business.Models.EditoraModel", b =>
+            modelBuilder.Entity("Biblioteca.Business.Models.Autor", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("varchar(200)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Autores", (string)null);
+                });
+
+            modelBuilder.Entity("Biblioteca.Business.Models.Editora", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -47,7 +62,7 @@ namespace Biblioteca.Data.Migrations
                     b.ToTable("Editoras", (string)null);
                 });
 
-            modelBuilder.Entity("Biblioteca.Business.Models.EnderecoModel", b =>
+            modelBuilder.Entity("Biblioteca.Business.Models.Endereco", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -91,7 +106,7 @@ namespace Biblioteca.Data.Migrations
                     b.ToTable("Enderecos", (string)null);
                 });
 
-            modelBuilder.Entity("Biblioteca.Business.Models.LivroModel", b =>
+            modelBuilder.Entity("Biblioteca.Business.Models.Livro", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -99,6 +114,9 @@ namespace Biblioteca.Data.Migrations
 
                     b.Property<bool>("Ativo")
                         .HasColumnType("bit");
+
+                    b.Property<Guid>("AutorId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("DataCadastro")
                         .HasColumnType("datetime2");
@@ -123,32 +141,46 @@ namespace Biblioteca.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AutorId");
+
                     b.HasIndex("EditoraId");
 
                     b.ToTable("Livros", (string)null);
                 });
 
-            modelBuilder.Entity("Biblioteca.Business.Models.EnderecoModel", b =>
+            modelBuilder.Entity("Biblioteca.Business.Models.Endereco", b =>
                 {
-                    b.HasOne("Biblioteca.Business.Models.EditoraModel", "Editora")
+                    b.HasOne("Biblioteca.Business.Models.Editora", "Editora")
                         .WithOne("Endereco")
-                        .HasForeignKey("Biblioteca.Business.Models.EnderecoModel", "EditoraId")
+                        .HasForeignKey("Biblioteca.Business.Models.Endereco", "EditoraId")
                         .IsRequired();
 
                     b.Navigation("Editora");
                 });
 
-            modelBuilder.Entity("Biblioteca.Business.Models.LivroModel", b =>
+            modelBuilder.Entity("Biblioteca.Business.Models.Livro", b =>
                 {
-                    b.HasOne("Biblioteca.Business.Models.EditoraModel", "Editora")
+                    b.HasOne("Biblioteca.Business.Models.Autor", "Autor")
+                        .WithMany("Livros")
+                        .HasForeignKey("AutorId")
+                        .IsRequired();
+
+                    b.HasOne("Biblioteca.Business.Models.Editora", "Editora")
                         .WithMany("Livros")
                         .HasForeignKey("EditoraId")
                         .IsRequired();
 
+                    b.Navigation("Autor");
+
                     b.Navigation("Editora");
                 });
 
-            modelBuilder.Entity("Biblioteca.Business.Models.EditoraModel", b =>
+            modelBuilder.Entity("Biblioteca.Business.Models.Autor", b =>
+                {
+                    b.Navigation("Livros");
+                });
+
+            modelBuilder.Entity("Biblioteca.Business.Models.Editora", b =>
                 {
                     b.Navigation("Endereco");
 

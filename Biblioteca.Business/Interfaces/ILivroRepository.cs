@@ -2,10 +2,10 @@
 
 namespace Biblioteca.Business.Interfaces
 {
-    public interface ILivroRepository : IRepository<LivroModel>
+    public interface ILivroRepository : IRepository<Livro>
     {
-        Task<IEnumerable<LivroModel>> ObterLivrosPorEditora(Guid EditoraId);
-        Task<IEnumerable<LivroModel>> ObterLivrosEditoras();
-        Task<LivroModel> ObterLivroEditora(Guid id);
+        Task<IEnumerable<Livro>> ObterLivrosPorEditora(Guid EditoraId);
+        Task<IEnumerable<Livro>> ObterLivrosEditoras();
+        Task<Livro> ObterLivroEditora(Guid id);
     }
 }

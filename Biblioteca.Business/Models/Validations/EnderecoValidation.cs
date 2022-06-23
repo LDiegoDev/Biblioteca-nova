@@ -2,7 +2,7 @@
 
 namespace Biblioteca.Business.Models.Validations
 {
-    public class EnderecoValidation : AbstractValidator<EnderecoModel>
+    public class EnderecoValidation : AbstractValidator<Endereco>
     {
         public EnderecoValidation()
         {

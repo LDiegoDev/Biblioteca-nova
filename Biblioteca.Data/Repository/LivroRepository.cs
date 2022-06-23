@@ -5,23 +5,25 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Biblioteca.Data.Repository
 {
-    public class LivroRepository : Repository<LivroModel>, ILivroRepository
+    public class LivroRepository : Repository<Livro>, ILivroRepository
     {
         public LivroRepository(DbContextApp context) : base(context) { }
 
-        public async Task<LivroModel> ObterLivroEditora(Guid id)
+        public async Task<Livro> ObterLivroEditora(Guid id)
         {
             return await Db.Livros.AsNoTracking().Include(f => f.Editora)
                 .FirstOrDefaultAsync(p => p.Id == id);
         }
 
-        public async Task<IEnumerable<LivroModel>> ObterLivrosEditoras()
+        public async Task<IEnumerable<Livro>> ObterLivrosEditoras()
         {
-            return await Db.Livros.AsNoTracking().Include(f => f.Editora)
-                .OrderBy(p => p.Nome).ToListAsync();
+            return await Db.Livros.AsNoTracking()
+                    .Include(f => f.Editora)
+                    .Include(f => f.Autor)
+                        .OrderBy(p => p.Nome).ToListAsync();
         }
 
-        public async Task<IEnumerable<LivroModel>> ObterLivrosPorEditora(Guid editoraId)
+        public async Task<IEnumerable<Livro>> ObterLivrosPorEditora(Guid editoraId)
         {
             return await Buscar(p => p.EditoraId == editoraId);
         }

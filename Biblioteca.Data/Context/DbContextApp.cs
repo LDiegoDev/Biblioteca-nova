@@ -7,10 +7,10 @@ namespace Biblioteca.Data.Context
     {
         public DbContextApp(DbContextOptions options) : base(options) { }
 
-        public DbSet<LivroModel> Livros { get; set; }
-        public DbSet<EnderecoModel> Enderecos { get; set; }
-        public DbSet<EditoraModel> Editoras { get; set; }
-
+        public DbSet<Livro> Livros { get; set; }
+        public DbSet<Endereco> Enderecos { get; set; }
+        public DbSet<Editora> Editoras { get; set; }
+        public DbSet<Autor> Autores { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             foreach (var property in modelBuilder.Model.GetEntityTypes()

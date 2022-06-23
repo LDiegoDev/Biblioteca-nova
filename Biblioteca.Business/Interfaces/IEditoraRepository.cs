@@ -2,9 +2,9 @@
 
 namespace Biblioteca.Business.Interfaces
 {
-    public interface IEditoraRepository : IRepository<EditoraModel>
+    public interface IEditoraRepository : IRepository<Editora>
     {
-        Task<EditoraModel> ObterEditoraEndereco(Guid id);
-        Task<EditoraModel> ObterEditoraLivrosEndereco(Guid id);
+        Task<Editora> ObterEditoraEndereco(Guid id);
+        Task<Editora> ObterEditoraLivrosEndereco(Guid id);
     }
 }

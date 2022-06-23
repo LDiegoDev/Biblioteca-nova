@@ -10,6 +10,18 @@ namespace Biblioteca.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Autores",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Nome = table.Column<string>(type: "varchar(200)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Autores", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Editoras",
                 columns: table => new
                 {
@@ -54,6 +66,7 @@ namespace Biblioteca.Data.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     EditoraId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    AutorId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Nome = table.Column<string>(type: "varchar(200)", nullable: false),
                     Descricao = table.Column<string>(type: "varchar(1000)", nullable: false),
                     Imagem = table.Column<string>(type: "varchar(100)", nullable: false),
@@ -64,6 +77,11 @@ namespace Biblioteca.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Livros", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Livros_Autores_AutorId",
+                        column: x => x.AutorId,
+                        principalTable: "Autores",
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Livros_Editoras_EditoraId",
                         column: x => x.EditoraId,
@@ -78,6 +96,11 @@ namespace Biblioteca.Data.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_Livros_AutorId",
+                table: "Livros",
+                column: "AutorId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Livros_EditoraId",
                 table: "Livros",
                 column: "EditoraId");
@@ -90,6 +113,9 @@ namespace Biblioteca.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Livros");
+
+            migrationBuilder.DropTable(
+                name: "Autores");
 
             migrationBuilder.DropTable(
                 name: "Editoras");

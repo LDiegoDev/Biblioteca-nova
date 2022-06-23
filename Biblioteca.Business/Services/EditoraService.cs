@@ -6,47 +6,47 @@ namespace Biblioteca.Business.Services
 {
     public class EditoraService : BaseService, IEditoraService
     {
-        private readonly IEditoraRepository _EditoraRepository;
+        private readonly IEditoraRepository _editoraRepository;
         private readonly IEnderecoRepository _enderecoRepository;
 
         public EditoraService(IEditoraRepository EditoraRepository,
                                  IEnderecoRepository enderecoRepository,
                                  INotificador notificador) : base(notificador)
         {
-            _EditoraRepository = EditoraRepository;
+            _editoraRepository = EditoraRepository;
             _enderecoRepository = enderecoRepository;
         }
 
-        public async Task<bool> Adicionar(EditoraModel Editora)
+        public async Task<bool> Adicionar(Editora Editora)
         {
             if (!ExecutarValidacao(new EditoraValidation(), Editora)
                 || !ExecutarValidacao(new EnderecoValidation(), Editora.Endereco)) return false;
 
-            if (_EditoraRepository.Buscar(f => f.Documento == Editora.Documento).Result.Any())
+            if (_editoraRepository.Buscar(f => f.Documento == Editora.Documento).Result.Any())
             {
                 Notificar("Já existe um Editora com este documento informado.");
                 return false;
             }
 
-            await _EditoraRepository.Adicionar(Editora);
+            await _editoraRepository.Adicionar(Editora);
             return true;
         }
 
-        public async Task<bool> Atualizar(EditoraModel Editora)
+        public async Task<bool> Atualizar(Editora Editora)
         {
             if (!ExecutarValidacao(new EditoraValidation(), Editora)) return false;
 
-            if (_EditoraRepository.Buscar(f => f.Documento == Editora.Documento && f.Id != Editora.Id).Result.Any())
+            if (_editoraRepository.Buscar(f => f.Documento == Editora.Documento && f.Id != Editora.Id).Result.Any())
             {
                 Notificar("Já existe um Editora com este documento informado.");
                 return false;
             }
 
-            await _EditoraRepository.Atualizar(Editora);
+            await _editoraRepository.Atualizar(Editora);
             return true;
         }
 
-        public async Task AtualizarEndereco(EnderecoModel endereco)
+        public async Task AtualizarEndereco(Endereco endereco)
         {
             if (!ExecutarValidacao(new EnderecoValidation(), endereco)) return;
 
@@ -55,7 +55,7 @@ namespace Biblioteca.Business.Services
 
         public async Task<bool> Remover(Guid id)
         {
-            if (_EditoraRepository.ObterEditoraLivrosEndereco(id).Result.Livros.Any())
+            if (_editoraRepository.ObterEditoraLivrosEndereco(id).Result.Livros.Any())
             {
                 Notificar("O Editora possui Livros cadastrados!");
                 return false;
@@ -68,13 +68,13 @@ namespace Biblioteca.Business.Services
                 await _enderecoRepository.Remover(endereco.Id);
             }
 
-            await _EditoraRepository.Remover(id);
+            await _editoraRepository.Remover(id);
             return true;
         }
 
         public void Dispose()
         {
-            _EditoraRepository?.Dispose();
+            _editoraRepository?.Dispose();
             _enderecoRepository?.Dispose();
         }
     }
