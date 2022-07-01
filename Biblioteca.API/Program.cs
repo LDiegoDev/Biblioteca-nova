@@ -9,6 +9,9 @@ builder.Services.AddDbContext<DbContextApp>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
+builder.Services.AddIdentityConfig(builder.Configuration);
+
+
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddWebApiConfig();
@@ -27,6 +30,8 @@ else
 {
     app.UseHsts();
 }
+
+app.UseAuthentication();
 
 app.UseWebApiConfig();
 
