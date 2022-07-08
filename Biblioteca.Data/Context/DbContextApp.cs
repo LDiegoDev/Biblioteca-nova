@@ -5,7 +5,7 @@ namespace Biblioteca.Data.Context
 {
     public class DbContextApp : DbContext
     {
-        public DbContextApp(DbContextOptions options) : base(options) { }
+        public DbContextApp(DbContextOptions<DbContextApp> options) : base(options) { }
 
         public DbSet<Livro> Livros { get; set; }
         public DbSet<Endereco> Enderecos { get; set; }

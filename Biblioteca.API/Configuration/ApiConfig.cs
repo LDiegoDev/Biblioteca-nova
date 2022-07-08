@@ -27,12 +27,12 @@ namespace Biblioteca.API.Configuration
         {
             app.UseHttpsRedirection();
 
-            app.UseAuthorization();
+            app.UseAuthentication();
 
             app.UseCors("Development");
 
             app.UseRouting();
-
+            app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

@@ -1,11 +1,14 @@
 ﻿using AutoMapper;
+using Biblioteca.API.Extensions;
 using Biblioteca.API.ViewModels;
 using Biblioteca.Business.Interfaces;
 using Biblioteca.Business.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Biblioteca.API.Controllers
 {
+    [Authorize]
     [Route("api/editoras")]
     public class EditorasController : MainController
     {
@@ -43,6 +46,8 @@ namespace Biblioteca.API.Controllers
             return CustomResponse(editora);
         }
 
+
+        [ClaimsAuthorize("Editora", "Adicionar")]
         [HttpPost]
         public async Task<ActionResult<EditoraViewModel>> Adicionar(EditoraViewModel editoraViewModel)
         {
@@ -53,6 +58,8 @@ namespace Biblioteca.API.Controllers
             return CustomResponse(editoraViewModel);
         }
 
+
+        [ClaimsAuthorize("Editora", "Atualizar")]
         [HttpPut("{id:guid}")]
         public async Task<ActionResult<EditoraViewModel>> Atualizar(Guid id, EditoraViewModel editoraViewModel)
         {
@@ -67,6 +74,8 @@ namespace Biblioteca.API.Controllers
             return CustomResponse(editoraViewModel);
         }
 
+
+        [ClaimsAuthorize("Editora", "Excluir")]
         [HttpDelete("{id:guid}")]
         public async Task<ActionResult<EditoraViewModel>> Excluir(Guid id)
         {
