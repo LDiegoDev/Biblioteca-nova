@@ -3,7 +3,7 @@ using Biblioteca.Business.Notificacoes;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
-namespace Biblioteca.API.Controllers
+namespace Biblioteca.API
 {
     [ApiController]
     public abstract class MainController : ControllerBase

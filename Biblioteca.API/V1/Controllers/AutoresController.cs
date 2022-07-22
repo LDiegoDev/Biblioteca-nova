@@ -4,9 +4,10 @@ using Biblioteca.Business.Interfaces;
 using Biblioteca.Business.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Biblioteca.API.Controllers
+namespace Biblioteca.API.V1.Controllers
 {
-    [Route("api/autores")]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/autores")]
     public class AutoresController : MainController
     {
         private readonly IAutorRepository _autorRepository;

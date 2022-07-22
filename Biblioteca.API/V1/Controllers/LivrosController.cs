@@ -1,12 +1,14 @@
 ﻿using AutoMapper;
+using Biblioteca.API.Extensions;
 using Biblioteca.API.ViewModels;
 using Biblioteca.Business.Interfaces;
 using Biblioteca.Business.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Biblioteca.API.Controllers
+namespace Biblioteca.API.V1.Controllers
 {
-    [Route("api/livros")]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/livros")]
     public class LivrosController : MainController
     {
         private readonly ILivroRepository _livroRepository;
@@ -23,12 +25,14 @@ namespace Biblioteca.API.Controllers
             _mapper = mapper;
         }
 
+        [ClaimsAuthorize("Livro", "Obter")]
         [HttpGet]
         public async Task<IEnumerable<LivroViewModel>> ObterTodos()
         {
             return _mapper.Map<IEnumerable<LivroViewModel>>(await _livroRepository.ObterLivrosEditoras());
         }
 
+        [ClaimsAuthorize("Livro", "Obter")]
         [HttpGet("{id:guid}")]
         public async Task<ActionResult<LivroViewModel>> ObterPorId(Guid id)
         {

@@ -3,6 +3,8 @@ using Biblioteca.Business.Notificacoes;
 using Biblioteca.Business.Services;
 using Biblioteca.Data.Context;
 using Biblioteca.Data.Repository;
+using Microsoft.Extensions.Options;
+using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace Biblioteca.API.Configuration
 {
@@ -20,6 +22,9 @@ namespace Biblioteca.API.Configuration
             services.AddScoped<ILivroService, LivroService>();
             services.AddScoped<IEditoraService, EditoraService>();
             services.AddScoped<IAutorService, AutorService>();
+
+            services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
+
 
             return services;
         }

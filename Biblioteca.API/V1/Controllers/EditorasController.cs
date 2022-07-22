@@ -6,10 +6,11 @@ using Biblioteca.Business.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Biblioteca.API.Controllers
+namespace Biblioteca.API.V1.Controllers
 {
     [Authorize]
-    [Route("api/editoras")]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/editoras")]
     public class EditorasController : MainController
     {
         private readonly IEditoraRepository _editoraRepository;
