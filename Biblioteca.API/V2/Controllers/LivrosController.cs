@@ -13,21 +13,24 @@ namespace Biblioteca.API.V2.Controllers
         private readonly ILivroRepository _livroRepository;
         private readonly ILivroService _livroService;
         private readonly IMapper _mapper;
+        private readonly ILogger _logger;
 
         public LivrosController(INotificador notificador,
                                 ILivroRepository livroRepository,
                                 ILivroService livroService,
-                                IMapper mapper) : base(notificador)
+                                IMapper mapper, ILogger<LivrosController> logger) : base(notificador)
         {
             _livroRepository = livroRepository;
             _livroService = livroService;
             _mapper = mapper;
+            _logger = logger;
         }
 
         [HttpGet]
-        public async Task<IEnumerable<LivroViewModel>> ObterTodos()
+        public string ObterTodos()
         {
-            return _mapper.Map<IEnumerable<LivroViewModel>>(await _livroRepository.ObterLivrosEditoras());
+            throw new Exception(message: "error");
+            //return _mapper.Map<IEnumerable<LivroViewModel>>(await _livroRepository.ObterLivrosEditoras());
         }
 
         [HttpGet("{id:guid}")]

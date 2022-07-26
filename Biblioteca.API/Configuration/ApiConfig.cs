@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System.Text.Json.Serialization;
+﻿using Biblioteca.API.Extensions;
+using HealthChecks.UI.Client;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Biblioteca.API.Configuration
 {
@@ -64,13 +66,15 @@ namespace Biblioteca.API.Configuration
                 app.UseHsts();
             }
 
-            //   app.UseMiddleware<ExceptionMiddleware>();
+            app.UseMiddleware<ExceptionMiddleware>();
 
             app.UseHttpsRedirection();
 
             app.UseRouting();
 
             app.UseAuthentication();
+
+
             app.UseAuthorization();
 
             app.UseStaticFiles();
@@ -78,20 +82,20 @@ namespace Biblioteca.API.Configuration
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                //endpoints.MapHealthChecks("/api/hc", new HealthCheckOptions()
-                //{
-                //    Predicate = _ => true,
-                //    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
-                //});
-                //endpoints.MapHealthChecksUI(options =>
-                //{
-                //    options.UIPath = "/api/hc-ui";
-                //    options.ResourcesPath = "/api/hc-ui-resources";
+                endpoints.MapHealthChecks("/api/hc", new HealthCheckOptions()
+                {
+                    Predicate = _ => true,
+                    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+                });
+                endpoints.MapHealthChecksUI(options =>
+                {
+                    options.UIPath = "/api/hc-ui";
+                    options.ResourcesPath = "/api/hc-ui-resources";
 
-                //    options.UseRelativeApiPath = false;
-                //    options.UseRelativeResourcesPath = false;
-                //    options.UseRelativeWebhookPath = false;
-                //});
+                    options.UseRelativeApiPath = false;
+                    options.UseRelativeResourcesPath = false;
+                    options.UseRelativeWebhookPath = false;
+                });
 
             });
 

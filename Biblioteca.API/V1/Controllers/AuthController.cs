@@ -18,13 +18,16 @@ namespace Biblioteca.API.V1.Controllers
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly AppSettings _appSettings;
+        private readonly ILogger _logger;
 
         public AuthController(INotificador notificador, SignInManager<IdentityUser> signInManager,
                               UserManager<IdentityUser> userManager,
-                              IOptions<AppSettings> appSettings) : base(notificador)
+                              IOptions<AppSettings> appSettings,
+                              ILogger<AuthController> logger) : base(notificador)
         {
             _signInManager = signInManager;
             _userManager = userManager;
+            _logger = logger;
             _appSettings = appSettings.Value;
 
         }
@@ -65,6 +68,7 @@ namespace Biblioteca.API.V1.Controllers
 
             if (result.Succeeded)
             {
+                _logger.LogInformation(message:"Usuario "+ loginUser.Email +" logado com sucesso !");
                 return CustomResponse(await GerarJwt(loginUser.Email));
             }
 
