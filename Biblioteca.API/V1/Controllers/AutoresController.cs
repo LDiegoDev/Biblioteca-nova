@@ -53,7 +53,7 @@ namespace Biblioteca.API.V1.Controllers
         }
         private async Task<AutorViewModel> ObterAutorLivros(Guid id)
         {
-            return _mapper.Map<AutorViewModel>(await _autorRepository.ObterAutorLivros(id));
+            return _mapper.Map<AutorViewModel>(await _autorRepository.ObterAutorLivro(id));
         }
     }
 }

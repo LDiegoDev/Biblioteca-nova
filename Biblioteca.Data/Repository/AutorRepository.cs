@@ -11,7 +11,7 @@ namespace Biblioteca.Data.Repository
         {
         }
 
-        public async Task<Autor> ObterAutorLivros(Guid id)
+        public async Task<Autor> ObterAutorLivro(Guid id)
         {
             return await Db.Autores.AsNoTracking()
                 .Include(x => x.Livros)
