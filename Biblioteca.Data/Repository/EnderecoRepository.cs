@@ -9,7 +9,7 @@ namespace Biblioteca.Data.Repository
     {
         public EnderecoRepository(DbContextApp context) : base(context) { }
 
-        public async Task<Endereco> ObterEnderecoPorEditora(Guid editoraId)
+        public async Task<Endereco> ObterEnderecoEditora(Guid editoraId)
         {
             return await Db.Enderecos.AsNoTracking()
                 .FirstOrDefaultAsync(f => f.EditoraId == editoraId);

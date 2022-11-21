@@ -61,7 +61,7 @@ namespace Biblioteca.Business.Services
                 return false;
             }
 
-            var endereco = await _enderecoRepository.ObterEnderecoPorEditora(id);
+            var endereco = await _enderecoRepository.ObterEnderecoEditora(id);
 
             if (endereco != null)
             {

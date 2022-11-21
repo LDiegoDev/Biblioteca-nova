@@ -4,6 +4,6 @@ namespace Biblioteca.Business.Interfaces
 {
     public interface IEnderecoRepository : IRepository<Endereco>
     {
-        Task<Endereco> ObterEnderecoPorEditora(Guid EditoraId);
+        Task<Endereco> ObterEnderecoEditora(Guid EditoraId);
     }
 }
